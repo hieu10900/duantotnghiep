@@ -1,0 +1,9 @@
+.submit-btn:hover {
+    background-color: rgba(0, 255, 64, 0.5);
+  }
+  .form-control:hover {
+    border: 1px solid rgb(0, 255, 106);
+  }
+  .form-control.text:focus {
+    background: rgb(217, 255, 0);
+  }
