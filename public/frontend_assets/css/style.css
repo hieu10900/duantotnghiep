@@ -270,7 +270,7 @@ a:focus {
 
 .top-bar .logo img {
     max-width: 100%;
-    max-height: 60px;
+    max-height: 111px;
 }
 
 .top-bar .top-bar-item {
@@ -323,7 +323,7 @@ a:focus {
 /**********************************/
 .nav-bar {
     position: relative;
-    background:#6B645E;
+    background:#423a36;
 }
 
 .nav-bar.nav-sticky {
@@ -331,6 +331,7 @@ a:focus {
     width: 100%;
     top: 0;
     left: 0;
+    right: 0;
     box-shadow: 0 2px 5px #000000;
     z-index: 999;
 }
@@ -338,7 +339,7 @@ a:focus {
 .nav-bar .navbar {
     display: flex;
     padding: 20px 0;
-    background: #6B645E!important;
+    background: #423a36!important;
     transition: .3s;
 }
 
@@ -353,14 +354,14 @@ a:focus {
     color: #ffffff;
     padding-top: 15px;
     padding-bottom: 15px;
-    padding-left: 40px;
+    padding-left: 25px;
     font-weight: 500;
     letter-spacing: 1px;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-    color: #CF9D6C;
+    /* color: #CF9D6C; */
 }
 
 .nav-bar .dropdown-menu {
@@ -386,8 +387,7 @@ a:focus {
      
     }
     .nav-edit{
-        
-        margin-left: 150px;
+        margin-left: 5rem;
     }
 }
 
@@ -437,7 +437,7 @@ a:focus {
 .carousel .carousel-img {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 400px;
     min-height: 400px;
     text-align: right;
     overflow: hidden;
@@ -450,7 +450,7 @@ a:focus {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, .5);
+    background: rgb(0 0 0 / 0%);
     z-index: 1;
 }
 
@@ -725,7 +725,7 @@ a:focus {
     content: "";
     width: 50%;
     height: 2px;
-    left: 25%;
+    left: 0%;
     bottom: 0;
     background: #cf9d6c;
 }
@@ -1145,6 +1145,7 @@ a:focus {
     position: relative;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
+    height: 310px;
 }
 
 .team .team-img img {

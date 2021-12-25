@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
+    <title>Ba Vì Homestay</title>
     @include('frontend.layouts.head')
 </head>
 <style>
@@ -16,7 +16,7 @@
   }
   .team-img img{
       width: 100%;
-      height: 270px;
+      height: 260px;
   }
   .team-text {
     text-align: center;
@@ -42,6 +42,15 @@ h2.textct:hover{
 .button-link.button-xs {
     font-size: 10px;
 }
+.section-header p::after {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 2px;
+    left: 25%;
+    bottom: 0;
+    background: #cf9d6c;
+}
 .button-link.button-xs{
     padding: 0;
     border-radius: 0;
@@ -61,6 +70,8 @@ span.unit{
 h3.price-detail span {
     margin: 10px;
 }
+.col-lg-3.all-product {
+    margin-bottom: 32px;
 }
 </style>  
 
@@ -76,7 +87,7 @@ h3.price-detail span {
             </div>
             <div class="row">
             @foreach ($ListRooms as $item)
-            <div class="col-lg-3 all-product">
+            <div class="col-lg-4 col-sm-6 col-md-6 all-product">
                     <div class="team-item">
                         <div class="team-img">
                         <img src="{{ config('app.base_url') . $item->feature_image_path	 }}" alt="Image">
@@ -94,17 +105,7 @@ h3.price-detail span {
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- Blog End -->

@@ -24,7 +24,9 @@
     <div class="form-group">
         <label for="">Ảnh phòng</label>
         <input type="file" name="feature_image_path" value="{{ old('feature_image_path') }}" id="" placeholder="" aria-describedby="helpId">
-        
+        @error('feature_image_path')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
     </div>
     <div class="form-group">
         <label for="">Ảnh chi tiết</label>
@@ -47,7 +49,7 @@
     </div>
     <div class="form-group">
         <label for="">Giới thiệu</label>
-        <textarea class="mt-3" id="my-editor" name="introduce_of_room" value="{{ old('introduce_of_room') }}" class="form-control">{!! old('content', 'test editor content') !!}</textarea>
+        <textarea class="mt-3" id="my-editor" name="introduce_of_room" value="{!! old('introduce_of_room') !!}" class="form-control">{!! old('introduce_of_room') !!}</textarea>
         @error('introduce_of_room')
         <span class="text-danger">{{ $message }}</span>
         @enderror

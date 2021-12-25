@@ -24,7 +24,16 @@ class Booking extends Model
         'check_in',
         'check_out',
         'status',
+
     ];
+    public function cancelBooking() {
+        $this->status = 4;
+        return $this->save();
+    }
+    public function approveBooking() {
+        $this->status = 1;
+        return $this->save();
+    }
     public function discount(){
         return $this->belongsToMany(Discount::class , 'booking_discount', 'booking_id', 'discount_id');
     }
@@ -33,5 +42,8 @@ class Booking extends Model
     }
     public function room(){
         return $this->belongsTo(Room::class, 'room_id', 'id');
+    }
+    public function evaluate(){
+        return $this->hasMany(Evaluate::class, 'booking_id', 'id');
     }
 }

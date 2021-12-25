@@ -44,32 +44,20 @@
 					<h3 class="card-title">{{ __('Chỉnh sửa hồ sơ') }}</h3>
 				</div>
 				<div class="card-body pb-0">
-					<form method="POST" action="" enctype="multipart/form-data">
-						@method('PUT')
+					<form method="POST" action="{{ route('user.profile.update', [auth()->user()->id]) }}" enctype="multipart/form-data">
 						@csrf
 						<div class="row">
 							<div class="col-sm-6 col-md-6">
 								<div class="input-box">
 									<div class="form-group">
 										<label class="form-label fs-12">{{ __('Họ tên') }}</label>
-										<input type="text" class="form-control @error('name') is-danger @enderror" name="name" value="{{ auth()->user()->name }}">
+										<input type="text" class="form-control @error('name') is-danger @enderror" name="name" value="{{ auth()->user()->full_name }}">
 										@error('name')
 											<p class="text-danger">{{ $errors->first('name') }}</p>
 										@enderror									
 									</div>
 								</div>
-							</div>
-							<div class="col-sm-6 col-md-6">
-								<div class="input-box">
-									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Job Role') }}</label>
-										<input type="text" class="form-control @error('job_role') is-danger @enderror" name="job_role" value="{{ auth()->user()->job_role }}">
-										@error('job_role')
-											<p class="text-danger">{{ $errors->first('job_role') }}</p>
-										@enderror
-									</div>
-								</div>
-							</div>						
+							</div>		
 							<div class="col-sm-6 col-md-6">
 								<div class="input-box">
 									<div class="form-group">
@@ -86,9 +74,9 @@
 								<div class="input-box">
 									<div class="form-group">								
 										<label class="form-label fs-12">{{ __('Số điện thoại') }}</label>
-										<input type="tel" class="fs-12 @error('phone_number') is-danger @enderror" id="phone-number" name="phone_number" value="{{ auth()->user()->phone_number }}">
-										@error('phone_number')
-											<p class="text-danger">{{ $errors->first('phone_number') }}</p>
+										<input type="tel" class="fs-12 @error('phone') is-danger @enderror" id="phone" name="phone" value="{{ auth()->user()->phone }}">
+										@error('phone')
+											<p class="text-danger">{{ $errors->first('phone') }}</p>
 										@enderror
 									</div>
 								</div>
@@ -100,12 +88,12 @@
 										<input type="text" class="form-control border-right-0 browse-file" placeholder="choose" readonly>
 										<label class="input-group-btn">
 											<span class="btn btn-primary special-btn">
-												Browse <input type="file" name="profile_photo" style="display: none;">
+												Browse <input type="file" name="avatar" style="display: none;">
 											</span>
 										</label>
 									</div>
-									@error('profile_photo')
-										<p class="text-danger">{{ $errors->first('profile_photo') }}</p>
+									@error('avatar')
+										<p class="text-danger">{{ $errors->first('avatar') }}</p>
 									@enderror
 								</div>
 							</div>	
@@ -123,7 +111,7 @@
 							
 						</div>
 						<div class="card-footer border-0 text-right mb-2 pr-0">
-							<a href="" class="btn btn-cancel mr-2">{{ __('Quay lại') }}</a>
+							<a href="{{ route('user.profile.index') }}" class="btn btn-cancel mr-2">{{ __('Quay lại') }}</a>
 							<button type="submit" class="btn btn-primary">{{ __('Cập nhật') }}</button>							
 						</div>
 					</form>

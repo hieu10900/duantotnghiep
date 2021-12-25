@@ -19,34 +19,34 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section"> An Vui Sign Up</h2>
+                    <h2 class="heading-section">HOMESTAY BA VÌ</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-7 col-lg-5">
                     <div class="login-wrap">
-                        <h3 class="text-center mb-4">Create Your Account</h3>
+                        <h3 class="text-center mb-4">Tạo tài khoản</h3>
                         <form action="{{ route('register.form') }}" method="POST" class="signup-form">
                             @csrf
                             <div class="form-group mb-3">
-                                <label class="label" for="name">Full Name</label>
-                                <input type="text" class="form-control" name="full_name" placeholder="John Doe">
+                                <label class="label" for="name">Họ và tên</label>
+                                <input type="text" class="form-control" name="full_name" placeholder="name">
                                 <span class="icon fa fa-user-o"></span>
                                 @error('full_name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label" for="email">Email Address</label>
-                                <input type="email" class="form-control" name="email" placeholder="johndoe@gmail.com">
+                                <label class="label" for="email">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="email">
                                 <span class="icon fa fa-paper-plane-o"></span>
                                 @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label" for="password">Password</label>
-                                <input id="password" type="password" name="password" class="form-control" placeholder="Password">
+                                <label class="label" for="password">Mật khẩu</label>
+                                <input id="password" type="password" name="password" class="form-control" placeholder="Mật khẩu">
                                 <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 <span class="icon fa fa-lock"></span>
                                 @error('password')
@@ -54,8 +54,8 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label" for="password">Password</label>
-                                <input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="Password">
+                                <label class="label" for="password">Nhập lại mật khẩu</label>
+                                <input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="Nhập lại mật khẩu">
                                 <span toggle="#password-confirm" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 <span class="icon fa fa-lock"></span>
                                 @error('password_confirmation')
@@ -63,10 +63,10 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Đăng ký</button>
                             </div>
                         </form>
-                        <p>I'm already a member! <a data-toggle="tab" href="{{ route('auth.getLoginForm') }}">Sign In</a></p>
+                        <p>Nếu có tài khoản vui lòng! <a href="{{ route('auth.getLoginForm') }}">Đăng nhập</a></p>
                     </div>
                 </div>
             </div>

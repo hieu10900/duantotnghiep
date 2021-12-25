@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+div#myTable_wrapper { white-space: nowrap; overflow-x: scroll; } @media screen and (max-width:769px) { .col-md-10{ max-width: 100% !important; } }
 
+</style>
 <body>
     @extends('admin/layout_master/layout_master')
     @section('contents')
@@ -22,33 +25,26 @@
 			</ol>
 		</div>
 	</div>
-	<!-- END PAGE HEADER -->
-    <!-- <div class="container">
-        <form action="{{ route('admin.sliders.index') }}" method="GET" class="row">
-            <div class="col-md-12" style="margin-left: 300px;">
-                <input class="form-control col-md-6 d-inline" style="margin-left: 20px;" type="text" name="keyword" value="{{ old('keyword') }}" />
-                <button class="btn btn-primary col-2">Tìm kiếm</button>
-            </div>
-        </form>
-    </div> -->
     <table class="table table-bordered table-hover mt-4 rounded" id="myTable" >
-        <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
-            <tr>
-                <td style="width: 10px;">Stt</td>
-                <td style="text-align: center;">Ảnh slider</td>
-                <td>Thông điệp</td>
-                <td>Ngày thêm</td>
-                <td style="text-align: center;"><a href="{{ route('admin.sliders.create') }}">
-                        Thêm mới</a></td>
+    <thead style="background-color: #7a5e49; max-width:100%;" class="table-dark" style="margin-top: 30px;">
+            <tr style="text-align: center">
+                <th style="width: 10px;">Stt</th>
+                <th style="text-align: center;">Ảnh slider</th>
+                <th>Thông điệp</th>
+                <th>Trạng thái</th>
+                <th>Ngày thêm</th>
+                <th style="text-align: center;"><a href="{{ route('admin.sliders.create') }}">
+                        Thêm mới</a></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align: center">
             <?php $dem =2 ?>
             @foreach ($data as $key => $item)
             <tr>
                 <td style="text-align: center;">{{ $key + 1 }}</td>
                 <td style="text-align: center;"><img src="{{ $item->image }}" alt="" width="100px" height="100px"></td>
                 <td>{{ $item->content }}</td>
+                <td>{{ $item->status == 0 ? "hidden" : "show" }}</td>
                 <td>{{ $item->created_at }}</td>
                 <td style="text-align: center;">
                     <a class="btn btn-primary" href="{{ route('admin.sliders.edit', [ 'id' => $item->id ])}}">Sửa</a>
@@ -86,7 +82,10 @@
 <script>
 
 $(document).ready(function() {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable( {
+        responsive: true,
+
+    });
 })
 </script>
 @endpush

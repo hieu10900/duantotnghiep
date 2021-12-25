@@ -5,9 +5,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>HOMESTAY</title>
 </head>
-
+<style>
+	div#myTable_wrapper { white-space: nowrap; overflow-x: scroll; } @media screen and (max-width:769px){ .col-md-10{ max-width: 100% !important; } .col-md-2 { max-width: 10% !important; } }
+</style>
 <body>
 	@extends('admin/layout_master/layout_master')
 	@section('contents')
@@ -53,7 +55,7 @@
 									<td>{{ $item->created_at }}</td>
 									<td>{{ $item->subject }}</td>
 									<td>{{ $item->message }}</td>
-									<td>{{ $item->status }}</td>
+									<td>{{ $item->status == 0 ? "Chưa phản hồi" : "Đã phản hồi"  }}</td>
 									<td>{{ $item->updated_at }}</td>
 									<td>
 										<button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Xóa</button>

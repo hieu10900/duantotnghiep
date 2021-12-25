@@ -12,16 +12,16 @@
     @extends('admin/layout_master/layout_master')
     @section('contents')
     <!-- PAGE HEADER -->
-	<div class="page-header mt-5-7">
-		<div class="page-leftheader">
-			<h4 class="page-title mb-0">{{ __('Danh sách các bình luận') }}</h4>
-			<ol class="breadcrumb mb-2">
-				<li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fa fa-magic mr-2 fs-12"></i>{{ __('Admin') }}</a></li>
-				<li class="breadcrumb-item" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Website') }}</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Danh sách các bình luận') }}</a></li>
-			</ol>
-		</div>
-	</div>
+    <div class="page-header mt-5-7">
+        <div class="page-leftheader">
+            <h4 class="page-title mb-0">{{ __('Danh sách các bình luận') }}</h4>
+            <ol class="breadcrumb mb-2">
+                <li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fa fa-magic mr-2 fs-12"></i>{{ __('Admin') }}</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Website') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Danh sách các bình luận') }}</a></li>
+            </ol>
+        </div>
+    </div>
     <div class="container">
         <form action="" method="GET" class="row">
             <div class="col-md-12" style="margin-left: 300px;">
@@ -31,8 +31,8 @@
         </form>
     </div>
     <table class="table table-bordered table-hover mt-4 rounded">
-        <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
-        <tr>
+    <thead style="background-color: #7a5e49; max-width:100%;" class="table-dark" style="margin-top: 30px;">
+            <tr>
                 <td>Id</td>
                 <td>Ảnh sản phẩm</td>
                 <td>Chi tiết bình luận</td>
@@ -41,16 +41,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $item)
+            @foreach ($data as $key => $item)
             <tr>
-                <td>{{ $item->id }}</td>
+                <td>{{ $key + 1 }}</td>
                 <td><img src="{{ $item->feature_image_path }}" width="100px" height="100px" alt=""></td>
                 <td>{{ $item->content }}</td>
                 <td>{{ $item->created_at }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ route('admin.comments.show', [ 'id' => $item->room_id ])}}">Xem</a>
-                 <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Delete</button>
-                    <div class="modal fade" id="confirm_delete_{{ $item->id }}" tabindex="-1" role="dialog">
+                    <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id_cmt }}">Delete</button>
+                    <div class="modal fade" id="confirm_delete_{{ $item->id_cmt }}" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <form action="{{ route('admin.comments.delete', [ 'id' => $item->id ])}}" method="POST">
+                                    <form action="{{ route('admin.comments.delete', [ 'id' => $item->id_cmt ])}}" method="POST">
                                         @csrf
                                         <button tybe="submit" class="btn btn-danger">Xóa</button>
                                     </form>

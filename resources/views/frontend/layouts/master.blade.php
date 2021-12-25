@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+    .section-header h2 {
+    margin: 0;
+    font-size: 45px;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: x-large !important;
+}
+.about-content {
+    font-weight: 500;
+}
+.slider-content figure {
+    width: 100%;
+    height: 90px;
+    /* border: 1px solid #555; */
+    overflow: hidden;
+    position: absolute;
+}
+</style>
 <head>
-    <title>Document</title>
+    <title>Ba Vì Homestay</title>
     @include('frontend.layouts.head')
 </head>
 <style>
@@ -28,7 +46,7 @@
                             Sed ultrices, est eget feugiat accumsan, dui nibh egestas tortor, ut rhoncus nibh ligula
                             euismod quam
                         </p> -->
-                        <a class="btn btn-custom" href="">Tìm hiểu thêm</a>
+                      
                     </div>
                 </div>
                 @endforeach
@@ -44,24 +62,17 @@
             <div data-aos="fade-down" class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-img">
-                        <img src="{{ asset('frontend_assets/img/baner tc.jpg') }}" alt="Image">
+                        <a href=""><img src="/image/product/{{ $post->image }}" alt="Image"></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="section-header text-left">
-                        <p>About Us</p>
-                        <h2>Chào mừng bạn đến với An vui!</h2>
+                        <p>Bài viết về Homestay mới nhất</p>
+                        <h2>{{ $post->title }}</h2>
                     </div>
                     <div class="about-content">
-                        <p>
-                            Dịch vụ homestay nghỉ dưỡng cho bạn phút giây hạnh phúc trọn vẹn bên bạn bè và người thân!
-                        </p>
-                        <p>“An Vui mang đến cho bạn những trải nghiệm lí tưởng như tại resort đẳng cấp với chi phí chỉ
-                            bằng homestay. Khu biệt thự là sự kết hợp hoàn hảo giữa thiết kế hiện đại, đa dạng tiện ích
-                            và thiên nhiên nhiên thơ mộng. Đến với An Vui, bạn có thể hoà mình vào không gian sinh thái
-                            xanh bát ngát, tận hưởng một cuộc trốn chạy thú vị cùng người bạn thương yêu.</p>
-                        <p>AN VUI Lodge & Cottage: biệt thự ven hồ”</p>
-                        <a class="btn btn-custom" href="">Tìm hiểu thêm</a>
+                    {!! $post->content !!}
+                        <a class="btn btn-custom" href="{{route('single.show',['id' => $post->id]) }}">Tìm hiểu thêm</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +84,7 @@
     <div class="team">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Danh Sách HomeStay</h2>
+                <h2>Danh Mục HomeStay</h2>
                 <p>Hàng loạt lựa chọn phù hợp với yêu cầu</p>
 
             </div>
@@ -104,8 +115,8 @@
     <div class="blog">
         <div class="container">
             <div class="section-header text-center">
-                <p>CÁC HOẠT ĐỘNG GIẢI TRÍ TẠI AN VUI</p>
-                <h2>Đến An Vui chơi gì?</h2>
+                <p>CÁC HOẠT ĐỘNG GIẢI TRÍ TẠI BA VÌ</p>
+                <h2>Đến Ba Vì chơi gì?</h2>
             </div>
             <div class="row">
                 <div class="col-lg-4">
@@ -115,9 +126,9 @@
 
                         </div>
                         <div class="blog-text">
-                            <h3><a href="#">Pool party - BBQ ngoài trời</a></h3>
-                            <p>
-                                Ami Homestay outdoor BBQ tour is a truly unique & interactive experience.
+                            <h3 style="text-align: center;"><a href="#">Pool party - BBQ ngoài trời</a></h3>
+                            <p style="text-align: center;">
+                            Tour BBQ ngoài trời Ami Homestay là một trải nghiệm tương tác & độc đáo thực sự.
                             </p>
                         </div>
 
@@ -130,8 +141,8 @@
 
                         </div>
                         <div class="blog-text">
-                            <h3><a href="#">Chèo thuyền kayak</a></h3>
-                            <p>
+                            <h3 style="text-align: center;"><a href="#">Chèo thuyền kayak</a></h3>
+                            <p style="text-align: center;">
                                 mặt hồ rộng bao quanh bởi núi Ba Vì
                             </p>
                         </div>
@@ -144,8 +155,8 @@
 
                         </div>
                         <div class="blog-text">
-                            <h3><a href="#">Tham quan</a></h3>
-                            <p>
+                            <h3 style="text-align: center;"><a href="#">Tham quan</a></h3>
+                            <p style="text-align: center;">
                                 Vườn Quốc Gia Ba Vì
                             </p>
                         </div>
@@ -160,7 +171,7 @@
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
-                <h2>AN VUI Lodge & Cottage: biệt thự ven hồ”</h2>
+                <h2>BA VÌ Lodge & Cottage: biệt thự ven hồ”</h2>
                 <p>HỆ THỐNG TIỆN ÍCH ĐA DẠNG</p>
             </div>
             <div  class="row">
@@ -228,7 +239,7 @@
     <div class="price">
         <div class="container">
             <div class="section-header text-center">
-                <p>Gallery</p>
+                <p>PHÒNG TRƯNG BÀY</p>
                 <section>
                     <div class="rt-container">
                         <div class="col-rt-12">
@@ -238,7 +249,12 @@
                                 <section class="slideshow">
                                     <div class="content">
                                         <div class="slider-content">
+                                            @foreach ($room as $item)
                                             <figure class="shadow">
+                                                <a href="{{ route('room_detail', [ 'id' => $item->id ])}}"><img src="{{ asset($item->feature_image_path) }}"></a>
+                                            </figure>
+                                            @endforeach
+                                            <!-- <figure class="shadow">
                                                 <img src="{{ asset('frontend_assets/img/beboi1.jpg') }}">
                                             </figure>
                                             <figure class="shadow"><img src="{{ asset('frontend_assets/img/beboi2.jpg') }}">
@@ -258,7 +274,7 @@
                                             <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct4.jpg') }}">
                                             </figure>
                                             <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct5.jpg') }}">
-                                            </figure>
+                                            </figure> -->
                                         </div>
                                     </div>
                                 </section>
@@ -267,37 +283,31 @@
                             </div>
                         </div>
                     </div>
-                    <p>READ OUR BLOG</p>
+                    <p>Bài Viết Liên Quan</p>
                 </section>
             </div>
 
             <div class="row">
                 <div class="col-md-4">
-
-                    <div class="price-item-left featured-item">
+                <div class="price-item-left featured-item">
                         <div class="price-body">
                             <div class="section-header ">
                                 <!-- <p>About Us</p> -->
-                                <h2>An Vui Lodge & Cottage – An Vui đâu cần tìm nơi</h2>
+                                <h2>{{ $post->title }}</h2>
                             </div>
                             <div class="about-content">
-                                <p>
-                                    An Vui Lodge & Cottage là tổ hợp biệt thự và bungalow nghỉ dưỡng ra đời vào tháng
-                                    09/2018, cung cấp điểm nghỉ dưỡng cuối tuần ở ngoại thành Hà…
-                                </p>
-
+                            {!! $post->content !!}
                             </div>
                         </div>
                         <div class="price-footer">
-                            <a class="btn btn-custom" href="">Xem ngay</a>
+                            <a class="btn btn-custom" href="{{route('single.show',['id' => $post->id]) }}">Xem ngay</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="price-item featured-item">
-
                         <div class="price-body">
-                            <img style="width: 100%" src="{{ asset('frontend_assets/./img/6.jpg') }}" alt="">
+                        <img style="width: 100%" src="/image/product/{{ $post_new->image }}" alt="">
 
                         </div>
 
@@ -305,23 +315,17 @@
                 </div>
                 <div class="col-md-4">
                     <div class="price-item-left featured-item">
-
                         <div class="price-body">
                             <div class="section-header ">
                                 <!-- <p>About Us</p> -->
-                                <h2>Nghỉ lễ 2/9, dân tình rủ nhau mở “pool party”</h2>
+                                <h2>{{ $post_new->title }}</h2>
                             </div>
                             <div class="about-content">
-                                <p>
-                                    Một chuyến đi ngắn ngày đến nghỉ ngơi ở homestay hoặc villa ở ngoại thành Hà Nội là
-                                    lựa chọn mà nhiều người yêu thích trong dịp nghỉ lễ ngắn…
-                                </p>
-
-
+                            {!! $post_new->content !!}
                             </div>
                         </div>
                         <div class="price-footer">
-                            <a class="btn btn-custom" href="">Xem ngay</a>
+                            <a class="btn btn-custom" href="{{route('single.show',['id' => $post->id]) }}">Xem ngay</a>
                         </div>
                     </div>
                 </div>

@@ -1,64 +1,53 @@
 <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-contact">
-                        <h2>Get In Touch</h2>
-                        <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope"></i>info@example.com</p>
-                        <div class="footer-social">
-                            <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-link">
-                        <h2>Popular Links</h2>
-                        <a href="">About Us</a>
-                        <a href="">Contact Us</a>
-                        <a href="">Our Service</a>
-                        <a href="">Service Points</a>
-                        <a href="">Pricing Plan</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-link">
-                        <h2>Useful Links</h2>
-                        <a href="">Terms of use</a>
-                        <a href="">Privacy policy</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-newsletter">
-                        <h2>Newsletter</h2>
-                        <form>
-                            <input class="form-control" placeholder="Full Name">
-                            <input class="form-control" placeholder="Email">
-                            <button class="btn btn-custom">Submit</button>
-                        </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-contact">
+                    <h2>Bài viết mới</h2>
+                    <p style="color: #fff;">Xuất phát từ ý tưởng mang đến một trải nghiệm nghỉ dưỡng đẳng cấp như
+                        resort với chi phí bằng homestay, AN VUI là chuỗi các biệt thự lớn nhỏ với thiết kế hiện đại,
+                        tiện nghi đầy đủ giữa bao la xanh tươi. <br>
+                        Một cuộc trốn chạy thú vị cùng với người thương yêu của bạn.
+                        AN VUI Lodge: biệt thự ven hồ</p>
+                    <div class="footer-social">
+                        <a class="btn" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                        <a class="btn" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                        <a class="btn" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a class="btn" href="https://vn.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container copyright">
-            <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved. Designed By <a
-                    href="https://htmlcodex.com">HTML Codex</a></p>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-link">
+                    <h2>Thông tin liên hệ</h2>
+                    <p>Muồng Voi, Vân Hòa
+                        Ba Vì, Hanoi, Vietnam.</p>
+                    <p>ĐIỆN THOẠI ĐẶT PHÒNG:</p>
+                    <a href="#">+(84) 89 999 6300</a>
+                    <a href="{{ route('contact') }}">Xem bản đồ</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-link">
+                    <h2>Quick Links</h2>
+                    <a href="{{ route('home') }}">Trang chủ</a>
+                    <a href="{{ route('about') }}">Giới thiệu</a>
+                    <a href="{{ route('single') }}">Tin Tức</a>
+                    <a href="{{ route('contact') }}">Liên hệ</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-newsletter">
+                    <h2>Nhận thông báo mail</h2>
+                    <form>
+                        <input class="form-control" placeholder="Họ tên" style="color: #ffffff;">
+                        <input class="form-control" type="email" placeholder="Email" style="color: #ffffff;">
+                        <button class="btn btn-custom">Gửi</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Footer End -->
-
-    <!-- Back to top button -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-    <!-- Pre Loader -->
-    <div id="loader" class="show">
-        <div class="loader"></div>
-    </div>
+  
+</div>

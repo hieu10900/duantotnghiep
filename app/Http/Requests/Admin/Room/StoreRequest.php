@@ -29,7 +29,7 @@ class StoreRequest extends FormRequest
             'room_type' => 'required',
             'price' => 'required|integer|min:0',
             'introduce_of_room' => 'required',
-            'feature_image_path' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'feature_image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
     public function messages()
@@ -42,6 +42,7 @@ class StoreRequest extends FormRequest
             'price.required' => 'Price không được để trống',
             'price.min' => 'Price phải lớn hơn 0',
             'introduce_of_room.required' => '',
+            'feature_image_path.required' => 'file ảnh không được để trống',
             'feature_image_path.image' => '',
             'feature_image_path.mimes' => 'Sai Định dạng file ảnh',
         ];

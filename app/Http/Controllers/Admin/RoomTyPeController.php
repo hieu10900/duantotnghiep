@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\room_types\StoreRequest;
+use App\Http\Requests\Admin\room_types\UpdateRequest;
 use App\Models\RoomTyPe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -51,7 +52,7 @@ class RoomTyPeController extends Controller
         $data = RoomTyPe::find($id);
         return view('admin/categories/edit', compact('data'));
     }
-    public function update($id)
+    public function update($id, UpdateRequest $request)
     {
         if (Gate::denies('View_Admin','CRUD_RoomType')) {
             abort(403);

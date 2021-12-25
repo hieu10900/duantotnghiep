@@ -13,7 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required',
+            'content' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image.required' => 'Ảnh không được để trống',
+            'content.required' => 'Nội dung không được để trống',
         ];
     }
 }

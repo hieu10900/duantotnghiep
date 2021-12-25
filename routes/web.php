@@ -27,6 +27,11 @@ Route::get('/profile_ss', function () {
     return view('user.profile.edit');
 })->name('user.profile.edit');
 
+Route::get('/evalute', 'Admin\CommentController@evalute')->name('evaluate');
+
+Route::get('/forget_password', 'User\UserController@forget')->name('forget_password');
+Route::post('/forget_password', 'User\UserController@forget_password')->name('user.forget_password');
+
 Route::get('/support', 'User\UserController@support')->name('user.support.index');
 Route::get('/create/support', 'User\UserController@createSupport')->name('user.support.create');
 Route::post('/store/support', 'User\UserController@storeSupport')->name('user.support.store');
@@ -34,39 +39,22 @@ Route::post('/delete/support{id}', 'User\UserController@deleteSupport')->name('u
 
 Route::get('/profile/password', 'User\UserPasswordController@index')->name('user.password');
 Route::post('/profile/password/{id}', 'User\UserPasswordController@update')->name('user.password.update');
+Route::post('/profile/edit/{id}', 'User\UserController@update')->name('user.profile.update');
 
-Route::get('/view', function (Request $request) {
-    $Room_types = null;
-    if ($request->has('keyword') == true) {
-        $keyword = $request->get('keyword');
-        $Room_types = RoomTyPe::where('name', 'LIKE', "%$keyword%")->paginate(10);
-    } else {
-        $Room_types = RoomTyPe::paginate(10);
-    }
-    return view('user.roomtype.index', [
-        'data' => $Room_types,
-    ]);
-})->name('user.roomtype.index');
-Route::get('/', function () {
-    $ListSlider = Slider::paginate(10);
-    return view('frontend/layouts/master', [
-        'data' => $ListSlider,
-    ]);
-});
+Route::get('/user/booking', 'User\BookingController@index')->name('user.booking');
+Route::get('/user/booking/{id}', 'User\BookingController@show')->name('show.user');
+Route::get('/evaluate/delete/{id}', 'User\BookingController@delete')->name('evaluate.delete');
+Route::get('/view', 'User\UserController@view')->name('user.roomtype.index');
+// Route::get('/', function () {
+//     $ListSlider = Slider::paginate(10);
+//     return view('frontend/layouts/master', [
+//         'data' => $ListSlider,
+//     ]);
+// });
 Route::get('/send-mail', [Tesmail::class, 'Tesmail']);
-Route::get('/admin', function () {
-    return view('admin/layout_master/layout_master');
-})->name('admin');
-Route::get('/', function () {
-    $ListSlider = Slider::paginate(10);
-    return view('frontend/layouts/master', [
-        'data' => $ListSlider,
-    ]);
-})->name('home');
+Route::get('/admin', 'Admin\DashboardController@dashboard')->name('admin');
+Route::get('/', 'Client\HomeController@index')->name('home');
 
-Route::get('/detail', function(){
-    return view('frontend/layouts/room_detail');
-});
 //auth
 Route::get('/redirect', 'Client\AuthController@redirectToProvider')->name("login.provider");
 Route::get('/google/callback', 'Client\AuthController@handleProviderCallback');
@@ -81,11 +69,14 @@ Route::get('/logout', 'Client\AuthController@logout')->name('auth.logout');
 //endauth
 
 //clien
+
 Route::get('/about', 'Client\AboutController@index')->name('about');
 Route::get('/contact', 'Client\ContactController@index')->name('contact');
+Route::post('/contact/store', 'Client\ContactController@store')->name('contact.store');
 Route::get('/single', 'Client\SingleController@index')->name('single');
-Route::get('/single/{id}','Client\SingleController@show')->name('single.show');
-Route::post('/booking','Client\BookingController@index')->name('booking');
+Route::get('/single/{id}', 'Client\SingleController@show')->name('single.show');
+Route::post('/bookingOfUsser', 'Client\BookingController@detail')->name('bookingOfUsser');
+Route::post('/booking', 'Client\BookingController@index')->name('booking');
 Route::get('/room_type/{id}', 'Client\HomeController@room_types')->name('room_type');
 Route::get('/room_detail/{id}', 'Client\HomeController@room_detail')->name('room_detail');
 Route::post('/add_comment/{id}', 'Client\HomeController@comment')->name('add_comment');
@@ -144,18 +135,18 @@ Route::group([
         Route::post('delete/{id}', 'RoomController@delete')->name('delete');
     });
 
-//user
-Route::group([
-    'prefix' => 'user',
-    'as' => 'user.',
-], function () {
-    Route::get('/', 'UserController@index')->name('index');
-    Route::get('create', 'UserController@create')->name('create');
-    Route::post('store', 'UserController@store')->name('store');
-    Route::get('edit/{id}', 'UserController@edit')->name('edit');
-    Route::post('update/{id}', 'UserController@update')->name('update');
-    Route::post('delete', 'UserController@delete')->name('delete');
-});
+    //user
+    Route::group([
+        'prefix' => 'user',
+        'as' => 'user.',
+    ], function () {
+        Route::get('/', 'UserController@index')->name('index');
+        Route::get('create', 'UserController@create')->name('create');
+        Route::post('store', 'UserController@store')->name('store');
+        Route::get('edit/{id}', 'UserController@edit')->name('edit');
+        Route::post('update/{id}', 'UserController@update')->name('update');
+        Route::post('delete', 'UserController@delete')->name('delete');
+    });
 
     Route::group([
         'prefix' => 'sliders',
@@ -198,13 +189,15 @@ Route::group([
         'prefix' => 'booking',
         'as' => 'booking.',
     ], function () {
-        Route::get('/', 'BokingController@index')->name('index');
         Route::get('create', 'BokingController@create')->name('create');
         Route::post('store', 'BokingController@store')->name('store');
         Route::get('edit/{id}', 'BokingController@edit')->name('edit');
         Route::get('show/{id}', 'BokingController@show')->name('show');
+        Route::get('approveBooking/{id}', 'BokingController@approveBooking')->name('approve');
+        Route::get('cancelBooking/{id}', 'BokingController@cancelBooking')->name('cancel');
         Route::post('update', 'BokingController@update')->name('update');
         Route::post('delete', 'BokingController@delete')->name('delete');
+        Route::get('/{status}', 'BokingController@index')->name('index');
     });
     // service
     Route::group([
@@ -231,6 +224,16 @@ Route::group([
         Route::post('delete', 'DiscountController@delete')->name('delete');
     });
 
-
-
+    // supporsts
+    Route::group([
+        'prefix' => 'supports',
+        'as' => 'supports.',
+    ], function () {
+        Route::get('/', 'SupportController@index')->name('index');
+        Route::get('create', 'SupportController@create')->name('create');
+        Route::post('store', 'SupportController@store')->name('store');
+        Route::get('edit/{id}', 'SupportController@edit')->name('edit');
+        Route::post('update/{id}', 'SupportController@update')->name('update');
+        Route::post('delete', 'SupportController@delete')->name('delete');
+    });
 });

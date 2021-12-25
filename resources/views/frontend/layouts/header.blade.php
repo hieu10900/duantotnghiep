@@ -7,9 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    a.aname-us {
+        font-size: 14px;
+        white-space: nowrap;
+        padding: 8px;
+        font-weight: 500;
+    }
+    i.fas.fa-users {
+    font-size: 2.5rem;
+    color: antiquewhite;
+}
+button.btn.posion {
+    position: absolute;
+    top: 0%; 
+    right: 0;
+}
+form.seach-form {
+    position: relative;
+}
+.sidebar-widget {
+    margin-right: 2rem;
+}
+</style>
 
 <body>
-@if (session('success'))
+    @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
@@ -21,7 +44,7 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                        <img src="{{ asset('frontend_assets/img/logo.jpg') }}" alt="Logo" width="200px">
+                            <img src="{{ asset('frontend_assets/img/logo.jpg') }}" alt="Logo" width="200px">
                         </a>
                     </div>
                 </div>
@@ -33,8 +56,8 @@
                                     <i class="fas fa-home"></i>
                                 </div>
                                 <div class="top-bar-text">
-                                    <h3>Opening Hour</h3>
-                                    <p>Mon - Fri, 8:00 - 9:00</p>
+                                    <h3>Địa chỉ</h3>
+                                    <p>Vườn Quốc Gia Ba Vì</p>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +67,8 @@
                                     <i class="fa fa-phone-alt"></i>
                                 </div>
                                 <div class="top-bar-text">
-                                    <h3>Call Us</h3>
-                                    <p>+012 345 6789</p>
+                                    <h3>Số điện thoại</h3>
+                                    <p>+0363338104</p>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +78,8 @@
                                     <i class="far fa-envelope"></i>
                                 </div>
                                 <div class="top-bar-text">
-                                    <h3>Email Us</h3>
-                                    <p>info@example.com</p>
+                                    <h3>Email</h3>
+                                    <p>hieubmph10900@fpt.edu.vn</p>
                                 </div>
                             </div>
                         </div>
@@ -89,12 +112,25 @@
                         </div>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Liên hệ</a>
                     </div>
-
-                    @if(!Auth::check())
-                    <a href="{{ route('auth.getLoginForm') }}" class="nav-item nav-link"> Đăng nhập <i class="fas fa-sign-in-alt"></i></a>       
-                    @else
-                    <a style="text-transform: uppercase;color: #212121; text-decoration: none;" href="{{ route('admin') }}"> &nbsp;{{ Auth::user()->full_name }}</a>&nbsp;&nbsp;&nbsp;
-                    @endif
+                    <div class="sidebar-widget">
+                        <div class="search-widget">
+                            <form class="seach-form">
+                                <input  class="form-control" type="text" placeholder="Tìm kiếm phòng">
+                                <button class="btn posion"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dropdown"> @if(!Auth::check())
+                        <div class=" dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-users"></i>
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <a href="{{ route('auth.getLoginForm') }}" class="nav-item nav-link"> Đăng nhập <i class="fas fa-sign-in-alt"></i></a>
+                            @else
+                            <a style="text-transform: uppercase;color: #e7cccc; text-decoration: none;" href="{{ route('user.booking') }}"><i class="fas fa-user"></i> &nbsp;{{ Auth::user()->full_name }}</a>&nbsp;&nbsp;&nbsp;
+                        </div>
+                        @endif
+                    </div>
                 </div>
             </nav>
 

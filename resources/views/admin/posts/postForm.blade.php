@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3 ">
                 <label for="exampleFormControlTextarea1" class="form-label">Nội Dung</label>
-                <textarea  id="content"  name="content" rows="20" cols="80">
+                <textarea   name="content" rows="20" cols="80">
                 </textarea>
                 <span class="text-danger" id="contentError"></span>
             </div>

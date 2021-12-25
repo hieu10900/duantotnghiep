@@ -23,7 +23,7 @@ class UserPasswordController extends Controller
             'new_password' => ['required', Rules\Password::min(8)],
             'new_confirm_password' => ['required', 'same:new_password', Rules\Password::min(8)],
         ]);
-        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
+        User::find(auth()->user()->id)->update(['password' => $request->new_password]);
 
         return redirect()->back()->with('success', 'Đã cập nhật mật khẩu thành công');
     }

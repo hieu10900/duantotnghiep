@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Slider\StoreRequest;
+use App\Http\Requests\Admin\Slider\UpdateRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -32,7 +34,7 @@ class SliderController extends Controller
         }
         return view('/admin/sliders/create');
     }
-    public function store(Request $request)
+    public function store(StoreRequest $StoreRequest)
     {
         if (Gate::denies('CRUD_Slide')) {
             abort(403);

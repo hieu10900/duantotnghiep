@@ -25,7 +25,7 @@ class BookingRequesr extends FormRequest
     {
         return [
             'name' =>'required|min:1',
-            'phone'=>'required|',
+            'phone'=>'required||min:10|max:11',
             'email' => 'required|email',
             'check_in'=>'required|date',
             'check_out'=>'required|date'
@@ -47,8 +47,11 @@ class BookingRequesr extends FormRequest
     {
         return [
             'required' => ':attribute Không được để trống',
-            'min' => ':attribute quá ngắn',
+            'min' => ':attribute không hợp lệ',
+            'date' => ':attribute không hợp lệ',
+            'max' =>":attribute không hợp lệ",
             'email'=>':attribute phải là email',
+            'numeric'=>':attributeđịnh dạng số điện thoại sai',
 
         ];
     }

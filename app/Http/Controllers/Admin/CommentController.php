@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use App\Models\Evaluate;
 use App\Models\ImageRoom;
 use App\Models\Room;
 use App\Models\Service;
@@ -13,15 +15,15 @@ use Illuminate\Support\Facades\DB;
 class CommentController extends Controller
 {
     public function index()
-    {   
-      
+    {
         $listComments = DB::table('comments')
-        ->select('comments.id', 'comments.content', 'comments.room_id', 'comments.created_by', 'comments.created_at', 'rooms.feature_image_path','users.id')
+        ->select('comments.id', 'comments.content', 'comments.room_id', 'comments.created_by', 'comments.created_at', 'rooms.feature_image_path', 'rooms.name', 'users.full_name')
         ->join('rooms', 'comments.room_id', '=', 'rooms.id')
         ->join('users', 'comments.created_by', '=', 'users.id')
         ->orderByDesc('created_at')
         ->paginate(10);
-
+        
+        // dd($listComments);
         return view('admin/comments/index', [
             'data' => $listComments,
         ]);
@@ -30,9 +32,8 @@ class CommentController extends Controller
     public function getComment($id)
     {
         $listComments = DB::table('comments')
-        ->select('comments.id', 'comments.content', 'comments.room_id', 'comments.created_by', 'comments.created_at', 'rooms.feature_image_path','users.id')
+        ->select('comments.id as id_cmt', 'comments.content', 'comments.room_id', 'comments.created_by', 'comments.created_at', 'rooms.feature_image_path', 'rooms.name')
         ->join('rooms', 'comments.room_id', '=', 'rooms.id')
-        ->join('users', 'comments.created_by', '=', 'users.id')
         ->where('comments.room_id', $id)
         ->paginate(10);
         return view('admin/comments/detail', [
@@ -67,8 +68,13 @@ class CommentController extends Controller
     public function delete($id)
     {
         $id_comment = Comment::find($id);
-        dd($id_comment);
         $id_comment->delete();
+        return redirect()->back();
+    }
+
+    public function evalute(Request $request){
+        $data = $request->all();
+        $evalute =  Evaluate::create($data);
         return redirect()->back();
     }
 }

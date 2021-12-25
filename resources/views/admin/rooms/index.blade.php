@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<style>
+    div#myTable_wrapper { white-space: nowrap; overflow-x: scroll; } @media screen and (max-width:769px) { .col-md-10{ max-width: 100% !important; } }
+</style>
 <body>
     @extends('admin/layout_master/layout_master')
     @section('contents')
@@ -32,7 +34,7 @@
         </form>
     </div> -->
     <table class="table table-bordered table-hover mt-4 rounded" id="myTable">
-        <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
+    <thead style="background-color: #7a5e49; max-width:100%;" class="table-dark" style="margin-top: 30px;">
             <tr>
                 <td style="width: 10px;">Stt</td>
                 <td style="width: 100px;">Tên phòng</td>
@@ -59,7 +61,7 @@
                 <td>{{ $item->price }}</td>
                 <td>{!! $item->introduce_of_room !!}</td>
                 <td>{{ $item->status == 0 ? "Chưa đặt" : "Đã đặt" }}</td>
-                <td>{{ $item->name_type }}</td>
+                <td>{{ $item->name_type ?? " Phòng Đã Xóa" }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ route('admin.rooms.edit', [ 'id' => $item->id ])}}">Sửa</a>
                     <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Xóa</button>
@@ -97,7 +99,10 @@
 <script>
 
 $(document).ready(function() {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable( {
+        responsive: true,
+
+    });
 })
 </script>
 @endpush

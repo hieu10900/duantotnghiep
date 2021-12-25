@@ -66,7 +66,8 @@ class UserController extends Controller
             abort(403);
         }
         $result = User::find($request['id']);
-        $data = request()->except('_token', 'password_confim', 'role', 'avatar_old', 'id');
+        $data = request()->except('_token', 'password_confirm', 'role', 'avatar_old', 'id');
+      
         if (empty($request['avatar']) == false) {
             $image_name = request()->file('avatar')->getClientOriginalName();
             $path_avatar = request()->file('avatar')->move(public_path('image/user'), $image_name);
@@ -74,9 +75,15 @@ class UserController extends Controller
         } else {
             $data['avatar'] = $request['avatar_old'];
         }
+       if($request['password'] == null ){
+              $data = request()->except('_token', 'password_confirm', 'password','role', 'avatar_old', 'id');
+       }
+     
         $result->update($data);
         if (isset($request['role']) == true) {
             $result->getRoles()->sync($request['role']);
+        }else{
+            $result->getRoles()->detach();
         }
         $alert = 'Đã Cập Nhật Thanh Công!';
         return redirect()->back()->with('alert', $alert);

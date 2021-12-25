@@ -2,10 +2,40 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
+    <title>Ba Vì Homestay</title>
     @include('frontend.layouts.head')
 </head>
-
+<style>
+    .blogShort h1 {
+    font-size: 36px;
+    color: chocolate;
+    font-weight: 500;
+}
+.sidebar .sidebar-widget .widget-title::after {
+    position: absolute;
+    content: "";
+    width: 40%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #d99228;
+}
+.single .post-item .post-meta {
+    display: block;
+    margin-top: 8px;
+}
+.single .post-item .post-text a {
+    font-size: 17px;
+    font-weight: 500;
+    color: chocolate;
+}
+article {
+    padding: 0.5rem;
+    color: darkred;
+    font-variant-caps: petite-caps;
+    font-weight: 500;
+}
+</style>
 <body>
 @include('frontend.layouts.header')
 <!-- Single Post Start-->
@@ -23,33 +53,32 @@
                             <article><p style="">
                                     {{printf($show_post->content)}}
                                 </p></article>
-
-
-                            @else
-                                @foreach ($list_post as $post)
-                                    <div class="blogShort">
-                                        <h1>{{$post->title}}</h1>
-                                        <img src="/image/product/{{ $post->image }}"
-                                             alt="post img"
-                                             class="pull-left img-responsive thumb margin10 img-thumbnail">
-                                        <div class="post-meta row">
-                                            <div class="col-6">
-                                                <p>Người Viết : {{$post->author->full_name}} / Lượt Xem
-                                                    : {{$post->view}} .</p>
-
-                                            </div>
-                                            <div class="col-6">
-                                                <a style="float: right"
-                                                   href="{{route('single.show',['id' => $post->id]) }}">READ MORE</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                {{$list_post->links()}}
-                            @endif
                         </div>
 
+                    @else
+                        @foreach ($list_post as $post)
+                            <div class="blogShort">
+                                <h1>{{$post->title}}</h1>
+                                <img src="/image/product/{{ $post->image }}"
+                                     alt="post img"
+                                     class="pull-left img-responsive thumb margin10 img-thumbnail">
+                                <div class="post-meta row">
+                                    <div class="col-6">
+                                        <p>Người Viết : {{$post->author->full_name}} / Lượt Xem
+                                            : {{$post->view}} .</p>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <a style="float: right"
+                                           href="{{route('single.show',['id' => $post->id]) }}">READ MORE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{$list_post->links()}}
+                    @endif
                 </div>
+
             </div>
             <div class="col-lg-4">
                 <div class="sidebar">
@@ -86,79 +115,82 @@
 
                 </div>
             </div>
-
         </div>
+
     </div>
-    <!-- Single Post End-->
+</div>
+</div>
+<!-- Single Post End-->
 
 
 @include('frontend.layouts.footer')
 <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('frontend_assets/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/lib/counterup/counterup.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('frontend_assets/lib/easing/easing.min.js') }}"></script>
+<script src="{{ asset('frontend_assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('frontend_assets/lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ asset('frontend_assets/lib/counterup/counterup.min.js') }}"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="{{ asset('frontend_assets/mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/mail/contact.js') }}"></script>
+<!-- Contact Javascript File -->
+<script src="{{ asset('frontend_assets/mail/jqBootstrapValidation.min.js') }}"></script>
+<script src="{{ asset('frontend_assets/mail/contact.js') }}"></script>
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('frontend_assets/js/main.js') }}"></script>
-    <!--jquery CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--slick slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-            integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript">
-        $('.slider-team').slick({
-            dots: true,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        arrows: false
-                    }
-                },
-
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        arrows: false
-                    }
+<!-- Template Javascript -->
+<script src="{{ asset('frontend_assets/js/main.js') }}"></script>
+<!--jquery CDN-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--slick slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    $('.slider-team').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
                 }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
-            ]
-        });
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            },
 
-    </script>
-    <!--michelsnik-->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+
+</script>
+<!--michelsnik-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 </body>
 
 </html>

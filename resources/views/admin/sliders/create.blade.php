@@ -35,17 +35,16 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    
-    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-    <script>
-        var options = {
-            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-        };
-        CKEDITOR.replace('my-editor', options);
-    </script>
+    <div class="mt-3" style="color: 000000;">
+    <label for="">Trạng thái</label>
+        <select class="form-control" name="status">
+            <option value="0" checked >hidden</option>
+            <option value="1">show</option>
+        </select>
+        <!-- @error('content')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror -->
+    </div>
     <button class="mt-3 btn btn-primary">Thêm mới</button>
 </form>
 @endsection

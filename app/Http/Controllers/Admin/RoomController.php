@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Room\StoreRequest;
+use App\Http\Requests\Admin\Room\UpdateRequest;
 use App\Models\ImageRoom;
 use App\Models\Room;
 use App\Models\RoomTyPe;
@@ -95,7 +96,7 @@ class RoomController extends Controller
         return view('admin/rooms/edit', compact('data', 'room_types', 'imageRooms'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, UpdateRequest $request)
     {
 
         if (Gate::denies('View_Admin','CRUD_Room')) {
@@ -116,6 +117,7 @@ class RoomController extends Controller
             $result['feature_image_path'] = $dataUploadFileRoooms['file_path'];
         }
         $rooms = Room::find($id);
+    
         $rooms->update($result);
 
         if ($request->hasFile('image')) {

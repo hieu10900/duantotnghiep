@@ -24,8 +24,8 @@
 	</div>
 	<!-- END PAGE HEADER -->
     <!-- USER PROFILE PAGE -->
-	<div class="row">
-		<div class="col-xl-3 col-lg-3 col-md-12">
+	<div class="d-flex justify-content-center">
+		<div class="col-xl-6 col-lg-4">
 			<div class="card border-0">
 				<div class="widget-user-image overflow-hidden mx-auto mt-5"><img alt="User Avatar" src="{{ asset('frontend_assets/img/avatar.jpg') }}" class="rounded-circle" ></div>
 				<div class="card-body text-center">

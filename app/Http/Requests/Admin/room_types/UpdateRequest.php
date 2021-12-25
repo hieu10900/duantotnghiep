@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:100',
+            'introduce' => 'required',
+            'image' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Loại phòng không được để trống',
+            'name.max' => 'Họ tên không được vượt quá 100 ký tự',
+            'image.required' => 'Ảnh không được để trống',
+            'introduce.required' => 'Nội dung không được để trống',
         ];
     }
 }

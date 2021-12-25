@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|max:100',
+            'image' => 'required',
             'introduce' => 'required'
         ];
     }
@@ -33,6 +34,7 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'Name không được để trống',
             'name.max' => 'Họ tên không được vượt quá 100 ký tự',
+            'image.required' => 'Ảnh không được để trống',
             'introduce.required' => 'introduce không được để trống',
         ];
     }
